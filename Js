@@ -1,6 +1,4 @@
-
 const UPI_ID = "aulatc@ybl";
-
 const TELEGRAM_LINK = "https://t.me/tournament_withdraw";
 
 // DEPOSIT
@@ -22,7 +20,7 @@ function openTelegram() {
 
 // REGISTER
 function registerDemo() {
-  const mobile = document.getElementById("mobile").value;
+  const mobile = document.getElementById("mobile").value.trim();
   const password = document.getElementById("password").value;
   const msg = document.getElementById("auth-msg");
 
@@ -32,7 +30,7 @@ function registerDemo() {
   }
 
   if (password.length < 6) {
-    msg.innerText = "❌ पासवर्ड कम से कम 6 अक्षर का हो";
+    msg.innerText = "❌ पासवर्ड कम से कम 6 अक्षर का होना चाहिए";
     return;
   }
 
@@ -44,7 +42,7 @@ function registerDemo() {
 
 // LOGIN
 function loginDemo() {
-  const mobile = document.getElementById("mobile").value;
+  const mobile = document.getElementById("mobile").value.trim();
   const password = document.getElementById("password").value;
   const msg = document.getElementById("auth-msg");
 
@@ -52,17 +50,10 @@ function loginDemo() {
   const savedPassword = localStorage.getItem("demoPassword");
 
   if (mobile === savedMobile && password === savedPassword) {
-
-    // LOGIN SUCCESS
     document.body.classList.add("logged-in");
-
-    // LOGIN BOX HIDE
     document.getElementById("login").style.display = "none";
 
-    msg.innerText = "✅ Login सफल हुआ!";
-
     alert("🎉 Welcome to DKS Tournament!");
-
   } else {
     msg.innerText = "❌ मोबाइल नंबर या पासवर्ड गलत";
   }
